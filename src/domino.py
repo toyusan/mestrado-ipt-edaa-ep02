@@ -31,12 +31,16 @@ class Domino():
 #  @brief  Metodo para sobrescrever o toString padrao da classe
 #  @param  None
 #  @retval None
-    def __repr__(self):
-        return str(self.esquerda)+ str(self.direita)
+    def __repr__(self, orientacao = 'none'):
+        if(orientacao == self.esquerda):
+            return str(self.direita) + str(self.esquerda)
+        else:
+            return str(self.esquerda) + str(self.direita)
+
 
 ########################################################################################################################
 #  @brief  Metodo de comparacao entre uma peça e outra
 #  @param  None
 #  @retval None
-    def __eq__(self,chave):
-        return self.esquerda == chave.esquerda and self.direita == chave.direita
+    def __eq__(self,outro_domino):
+        return self.esquerda == outro_domino.esquerda and self.direita == outro_domino.direita

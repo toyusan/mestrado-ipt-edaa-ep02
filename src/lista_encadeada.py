@@ -68,21 +68,30 @@ class ListaEncadeada:
         x.proximo = self.cabeca
         self.cabeca = x
 
-    def busca(self, chave):
-        p = self.cabeca
-        found = False
-        while(p != None and not found):
-            if (p.dado == chave):
-                found = True
-            else:
-                p = p.proximo
-        return found
-
+########################################################################################################################
+#  @brief  Verifica o tamanho da lista
+#  @param  None
+#  @retval Tamanho da lista
     def tamanho(self):
         p = self.cabeca
         contador = 0
         while p != None:
             contador = contador + 1
             p = p.proximo
-
         return contador
+
+########################################################################################################################
+#  @brief  Remove um dado da lista
+#  @param  chave: dado a ser removido na lista encadeada
+#  @retval None
+    def remove(self,chave):
+        p = None
+        q = self.cabeca
+        while(q != None and q.dado != chave.dado):
+            p = q
+            q = q.proximo
+        if q != None:
+            if(p == None):
+                self.cabeca = q.proximo
+            else:
+                p.proximo = q.proximo
