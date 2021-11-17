@@ -82,13 +82,13 @@ def verifica_formacao(peca, lista_pecas):
                     proxima.dado.inverte()
                     achou = True
                     break
-                else:
+                #else:
                     # As duas pecas estao invetidas ab|ca
-                    if peca.dado.esquerda == proxima.dado.direita:
-                        peca.dado.inverte()
-                        proxima.dado.inverte()
-                        achou = True
-                        break
+                    #if peca.dado.esquerda == proxima.dado.direita:
+                        #peca.dado.inverte()
+                        #proxima.dado.inverte()
+                        #achou = True
+                        #break
         proxima = proxima.proximo
 
     # Se achou algumas combinacao valida
@@ -134,6 +134,7 @@ lines = open_file(address, 'r')
 
 # Variáveis usadas no while para ler o arquivo e identificar qual o caso de teste
 teste = 0
+erro = False
 i = 0
 
 # Tratando as linhas do arquivo
@@ -158,10 +159,21 @@ while(i < len(lines)):
         # Colocando os dominos na lista encadeada
         for j in range (i + 1, i + 1 + qtd_dominos, 1):
             line = lines[j]
+
+            # Verificando se eh uma peca de domino valida
+            if(int(line[0]) > 6 or int(line[2]) > 6):
+                erro = True
+                break
             peca = domino.Domino(int(line[0]),int(line[2]))
             lista_pecas.insere(peca)
+
         #print('Lista de pecas: ' + str(lista_pecas))
 
+        # Se ocorreu erro das pecas de domino, sai do laço princial
+        if erro:
+            print('Nao eh uma peca de domino valida')
+            break
+			
         peca_atual = lista_pecas.cabeca
         # Vamos verificar se existe uma formação valida para cada peça
         for k in range(0, lista_pecas.tamanho(), 1):
