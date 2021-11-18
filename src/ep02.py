@@ -134,6 +134,7 @@ lines = open_file(address, 'r')
 
 # Variáveis usadas no while para ler o arquivo e identificar qual o caso de teste
 teste = 0
+formacao = ''
 erro = False
 i = 0
 

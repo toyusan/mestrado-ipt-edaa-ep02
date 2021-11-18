@@ -18,18 +18,6 @@ class Node:
         self.dado = dado
         self.proximo = proximo
 
-    def getDado(self):
-        return self.dado
-
-    def getProximo(self):
-        return  self.proximo
-
-    def setDado(self,novo_dado):
-        self.dado = novo_dado
-
-    def setProximo(self, novo_proximo):
-        self.proximo = novo_proximo
-
 ########################################################################################################################
 #  @brief  Metodo para sobrescrever o toString padrao da classe
 #  @param  None
